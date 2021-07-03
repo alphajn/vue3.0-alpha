@@ -4,11 +4,15 @@
  * @type {Object}
  */
 
+const { NODE_ENV } = process.env;
+
 export default {
-    '@api/': {
-        url: '/-/x/',
+    '@api2/': {
+        url: NODE_ENV === 'development' ? '/-/api2/' : 'http://jinnan.dev',
         headers() {
-            return {};
+            return {
+
+            };
         },
     },
 };

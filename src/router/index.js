@@ -44,8 +44,9 @@ const router = createRouter({
         }
 
         return savedPosition || {
-            x: 0,
-            y: 0,
+            left: 0,
+            top: 0,
+            behavior: 'smooth',
         };
     },
 });

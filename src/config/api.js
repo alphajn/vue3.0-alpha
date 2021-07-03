@@ -24,8 +24,8 @@ const get = {
 };
 
 const api = {
-    getCurrency(params) {
-        return axios.get('@api/pro/v2/beta/common/currencies', { params });
+    checkAuth(params) {
+        return axios.get('@api2/spot/api/v1/auth/check', { params });
     },
 };
 
@@ -37,12 +37,12 @@ export const $api = {
 };
 
 // 方便挂在到Vue实例上使用
-export const install = (Vue) => {
-    Vue.prototype.$api = $api;
+export const install = (app) => {
+    app.config.globalProperties.$api = $api;
 
     // 开发环境打印请求接口
     if (process.env.NODE_ENV === 'development') {
         // eslint-disable-next-line
-        console.log('%c可用的 this.$api', 'background-color: #0bba96; color: #fff; padding: 2px 4px; border-radius: 4px;', Vue.prototype.$api);
+        console.log('%c可用的 this.$api', 'background-color: #0bba96; color: #fff; padding: 2px 4px; border-radius: 4px;', $api);
     }
 };

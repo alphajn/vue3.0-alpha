@@ -61,7 +61,7 @@ const requestHandle = (config) => {
 
     // 添加国际化
     config.headers = {
-        'Accept-Language': i18n.locale,
+        'Accept-Language': i18n.getLang(),
         ...config.headers,
     };
 
@@ -76,6 +76,11 @@ const requestHandle = (config) => {
     if (params) {
         config.params = { ...params, ...config.params };
     }
+
+    config.params = {
+        ...config.params,
+        r: Math.random().toString(32).substring(2),
+    };
 
     return config;
 };

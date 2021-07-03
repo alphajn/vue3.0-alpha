@@ -9,6 +9,7 @@ const STORE_LANG = 'lang';
 
 // 国家化实例对象
 const i18n = createI18n({
+    // locale: defaultLang,
     legacy: false, // Composition 语法格式
     fallbackLocale: defaultLang, // 失败使用默认默认语言
     missingWarn: false, // 禁止本地失败警告
@@ -144,6 +145,19 @@ i18n.setLang = (lang = '', redirect = false) => {
 
         setAsyncLang(lang);
     }
+};
+
+/**
+ * 获取当前语言
+ *
+ * @return {Sting} zh-cn
+ */
+i18n.getLang = () => {
+    if (i18n.mode === 'legacy') {
+        return i18n.global.locale;
+    }
+
+    return i18n.global.locale.value;
 };
 
 export {
