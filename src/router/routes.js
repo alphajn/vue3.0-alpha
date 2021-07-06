@@ -4,8 +4,8 @@ const routes = [
         component: () => import(/* webpackChunkName: "home" */ '@/views/index'),
     },
     {
-        path: '/demo',
-        component: () => import(/* webpackChunkName: "demo" */ '@/views/demo'),
+        path: '/demo/table/',
+        component: () => import(/* webpackChunkName: "demo" */ '@/views/demo/table'),
     },
 ];
 

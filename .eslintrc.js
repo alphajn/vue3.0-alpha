@@ -5,7 +5,7 @@ module.exports = {
         node: true,
     },
     extends: [
-        'plugin:vue/vue3-essential',
+        'plugin:vue/vue3-recommended',
         '@vue/airbnb',
     ],
     parserOptions: {
@@ -37,6 +37,8 @@ module.exports = {
             js: 'never',
             vue: 'never',
         }],
+        // 4 行空格缩进
+        'vue/html-indent': ['error', 4],
     },
     overrides: [{
         files: [

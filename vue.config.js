@@ -6,8 +6,10 @@ module.exports = {
     productionSourceMap: false,
     devServer: {
         disableHostCheck: true,
-        // proxy: 'http://localhost:8080'
         proxy,
+        overlay: {
+            errors: false,
+        },
     },
     css: {
         loaderOptions: {
