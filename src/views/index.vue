@@ -9,6 +9,13 @@
                 >
                     Table-Demo
                 </el-button>
+                <el-button
+                    type="success"
+                    plain
+                    @click="$router.push('/demo/kline/')"
+                >
+                    Kline-Demo
+                </el-button>
             </li>
         </ul>
     </section>

@@ -2,6 +2,10 @@ const StylelintPlugin = require('stylelint-webpack-plugin');
 const { proxy, LogMessage } = require('./config/proxy');
 
 module.exports = {
+    // 打包库文件使用
+    // output: {
+    //     libraryExport: 'default',
+    // },
     lintOnSave: 'warning',
     productionSourceMap: false,
     devServer: {
