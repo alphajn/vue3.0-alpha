@@ -2,10 +2,6 @@ const StylelintPlugin = require('stylelint-webpack-plugin');
 const { proxy, LogMessage } = require('./config/proxy');
 
 module.exports = {
-    // 打包库文件使用
-    // output: {
-    //     libraryExport: 'default',
-    // },
     lintOnSave: 'warning',
     productionSourceMap: false,
     devServer: {
@@ -28,6 +24,9 @@ module.exports = {
         config.plugins.delete('prefetch');
     },
     configureWebpack: {
+        output: {
+            // libraryTarget: 'commonjs-module',
+        },
         plugins: [
             new LogMessage(),
             new StylelintPlugin({
