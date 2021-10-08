@@ -9,8 +9,8 @@
     </div>
 </template>
 <script>
-import cTable from '@/components/Table';
 import { reactive, toRefs } from 'vue';
+import cTable from '@/components/Table';
 
 export default {
     components: {
