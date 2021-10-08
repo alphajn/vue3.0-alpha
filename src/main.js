@@ -5,7 +5,7 @@ import ElementPlus from 'element-plus';
 import App from './App';
 import router from './router';
 import store from './store';
-import 'element-plus/lib/theme-chalk/index.css';
+import 'element-plus/dist/index.css';
 
 createApp(App)
     .use(i18n)
