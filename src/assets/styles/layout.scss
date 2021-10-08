@@ -1,7 +1,16 @@
-// flex布局 start
-[class*="flex-row"],
-[class*="flex-col"] {
+/**
+ * @file 常用通用样式 flex 布局
+ * @date 2021-06-25
+ */
+
+[class*=flex-row] {
     display: flex;
+    flex-flow: row nowrap;
+}
+
+[class*=flex-col] {
+    display: flex;
+    flex-flow: column nowrap;
 }
 
 .flex {
@@ -19,13 +28,8 @@
     }
 
     @each $key in flex-start, flex-end, center, space-between, space-around {
-        &-row-#{$key} {
-            flex-flow: row nowrap;
-            justify-content: #{$key};
-        }
-
+        &-row-#{$key},
         &-col-#{$key} {
-            flex-flow: column nowrap;
             justify-content: #{$key};
         }
 
@@ -39,6 +43,10 @@
         &-#{$key} {
             flex-wrap: #{$key};
         }
+    }
+
+    &-1 {
+        flex: 1; // flex:<number> 1 0
     }
 
     &-shink-0 {
