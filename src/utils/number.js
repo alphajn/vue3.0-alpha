@@ -3,12 +3,16 @@ import BN from 'bignumber.js';
 
 BN.config({
     DECIMAL_PLACES: 20, // 小数位数
+    EXPONENTIAL_AT: 20, // 科学标识法位数
 });
 
 // 处理返回结果
 function handleReturn(result) {
-    if (/[a-z]/i.test(result)) return '0';
-    return result.toFixed ? result.toFixed() : result;
+    if (result.toFixed) {
+        return result.toFixed();
+    }
+
+    return /[a-z]/i.test(result) ? '0' : result;
 }
 
 /**
