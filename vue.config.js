@@ -7,6 +7,7 @@ module.exports = {
     devServer: {
         disableHostCheck: true,
         proxy,
+        open: true,
         overlay: {
             errors: false,
         },
