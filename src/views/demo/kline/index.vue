@@ -89,7 +89,7 @@ export default {
                 },
             });
 
-            state.chart.setPriceVolumePrecision(10, 10);
+            state.chart.setPriceVolumePrecision(8, 8);
 
             // 添加数据
             state.chart.applyNewData(getData());

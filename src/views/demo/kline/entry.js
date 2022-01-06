@@ -13,7 +13,7 @@ const useKline = (elId, theme = 'dark') => {
     chart.setLeftMinVisibleBarCount(5); // 左边最小可见柱子数
     chart.setRightMinVisibleBarCount(5); // 右边最小可见柱子数
     chart.setOffsetRightSpace(60); // 设置图表右边可以空出来的间隙
-    chart.setDataSpace(7); // 默认柱子宽度
+    chart.setDataSpace(7); // 默认柱子宽度
 
     // 添加ma
     chart.createTechnicalIndicator('MA', false, {
@@ -32,12 +32,23 @@ const useKline = (elId, theme = 'dark') => {
         calcParamsAllowDecimal: { 1: true },
         precision: 4,
     });
+    // 覆盖ma 默认展示[10, 30, 60]
+    chart.overrideTechnicalIndicator({
+        name: 'MA',
+        calcParams: [10, 30, 60],
+    });
 
     return chart;
 };
 
 export {
     useKline,
-    dispose as destroy,
+    dispose,
+    version,
+};
+
+export default {
+    useKline,
+    dispose,
     version,
 };

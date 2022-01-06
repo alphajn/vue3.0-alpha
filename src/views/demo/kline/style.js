@@ -4,7 +4,7 @@ const getStyle = (theme = 'black') => {
         up_5: 'rgba(43, 180, 98, 0.5)',
         down: '#fb4c51',
         down_5: 'rgba(251, 76, 81, 0.5)',
-        no: '#888',
+        no: '#2bb462',
         family: 'Helvetica Neue',
         font: 10,
         crosshair: '#fff',
@@ -68,7 +68,7 @@ const getStyle = (theme = 'black') => {
             },
             // 面积图
             area: {
-                lineSize: 2, // 线粗
+                lineSize: 2, // 线粗
                 lineColor: '#2196f3', // 线颜色
                 value: 'close', // 对应数据字段里的key
                 fillColor: [
@@ -131,7 +131,19 @@ const getStyle = (theme = 'black') => {
             tooltip: {
                 showRule: 'always', // 'always' | 'follow_cross' | 'none'
                 showType: 'standard', // 'standard' | 'rect'
-                labels: ['', '开≈', '收≈', '高≈', '低≈', '量: '],
+                labels: ['', '开≈', '高≈', '低≈', '收≈', '量: '],
+                // values: (kLineData) => {
+                //     const change = (kLineData.close - kLineData.open) / kLineData.open * 100;
+                //     const color = change < 0 ? base.down : base.up;
+                //     return [
+                //         { value: kLineData.open, color },
+                //         { value: kLineData.high, color },
+                //         { value: kLineData.low, color },
+                //         { value: kLineData.close, color },
+                //         { value: kLineData.volume, color },
+                //         { value: `${change.toFixed(2)}%`, color },
+                //     ];
+                // },
                 // 可以是数组，也可以是方法，如果是方法则需要返回一个数组
                 // 数组和方法返回的数组格式为:
                 // [xxx, xxx, ......]或者[{ color: '#fff', value: xxx }, { color: '#000', value: xxx }, .......]
@@ -171,7 +183,7 @@ const getStyle = (theme = 'black') => {
             bar: {
                 upColor: style.up_5,
                 downColor: style.down_5,
-                noChangeColor: style.no,
+                noChangeColor: style.up_5,
             },
             line: {
                 size: 0.4,
@@ -191,9 +203,9 @@ const getStyle = (theme = 'black') => {
                     size: 12,
                     family: style.family,
                     weight: 'normal',
-                    paddingLeft: 3,
-                    paddingTop: 2,
-                    paddingRight: 3,
+                    paddingLeft: 7,
+                    paddingTop: 4,
+                    paddingRight: 5,
                     paddingBottom: 2,
                     borderRadius: 2,
                 },
@@ -307,10 +319,10 @@ const getStyle = (theme = 'black') => {
                     size: style.font,
                     family: style.family,
                     weight: 'normal',
-                    paddingLeft: 2,
-                    paddingRight: 2,
-                    paddingTop: 3,
-                    paddingBottom: 2,
+                    paddingLeft: 6,
+                    paddingTop: 2,
+                    paddingRight: 4,
+                    paddingBottom: 1,
                     borderSize: 1,
                     borderColor: style.crosshair_bg,
                     borderRadius: 2,

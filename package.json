@@ -5,7 +5,7 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "build:kline": "vue-cli-service build --target lib --name kline-simple src/views/demo/kline/entry.js && yarn cp",
+    "build:kline": "vue-cli-service build --target lib --name kline-simple src/views/demo/kline/entry.js",
     "cp": "cp ./dist/kline-simple.umd.min.js /Users/bj89011ml/Desktop/work/fed-exchange-web/src/npm_modules/kline-simple.js ",
     "test:unit": "vue-cli-service test:unit",
     "lint": "yarn eslint  && yarn stylelint",
