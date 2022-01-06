@@ -39,14 +39,14 @@ const router = createRouter({
         if (to.hash) {
             return {
                 selector: to.hash,
-                behavior: 'smooth',
+                // behavior: 'smooth',
             };
         }
 
         return savedPosition || {
             left: 0,
             top: 0,
-            behavior: 'smooth',
+            // behavior: 'smooth',
         };
     },
 });

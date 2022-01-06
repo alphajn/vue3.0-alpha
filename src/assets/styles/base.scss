@@ -25,18 +25,16 @@ h4,
 h5,
 h6 { font-weight: normal; }
 
-div,
 table,
-form,
 input,
 button,
-select,
-textarea,
-fieldset,
-legend {
+textarea {
     outline: none;
     border: 0;
     background-color: transparent;
+    -webkit-appearance: none;
+    appearance: none;
+    -moz-appearance: none;
 }
 
 ul,
@@ -48,15 +46,12 @@ a {
     cursor: pointer;
 }
 
-img { border: 0; }
+img {
+    border: 0;
 
-button,
-input,
-select,
-textarea {
-    -webkit-appearance: none;
-    appearance: none;
-    -moz-appearance: none;
+    &[src=""] {
+        opacity: 0;
+    }
 }
 
 table {
@@ -65,13 +60,3 @@ table {
     word-wrap: break-word;
     word-break: break-all;
 }
-
-.clearfix::after {
-    content: ".";
-    display: block;
-    height: 0;
-    clear: both;
-    visibility: hidden;
-}
-
-.clearfix { zoom: 1; }

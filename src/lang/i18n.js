@@ -2,10 +2,7 @@
 // 文档 https://vue-i18n.intlify.dev/api/composition.html
 
 import { createI18n } from 'vue-i18n';
-import { langs, lang as defaultLang } from '@/config/setup';
-
-// 默认存储的cookie key
-const STORE_LANG = 'lang';
+import { langs, lang as defaultLang, STORE_LANG } from '@/config/setup';
 
 // 国家化实例对象
 const i18n = createI18n({
@@ -17,16 +14,13 @@ const i18n = createI18n({
     messages: {}, // 如果不设置 availableLocales 获取会有个默认的 en-US
 });
 
-// i18n添加支持的语言的语言
-i18n.langs = langs;
-
 /**
  * 判断语言是否支持设置
  *
  * @param {string} lang 需要判断的语言
- * @returns {boolean} 支持返回true
+ * @returns {boolean}
  */
-const supportLang = (lang = '') => lang && langs.includes(lang);
+const supportLang = (lang = '') => !!lang && langs.includes(lang);
 
 /**
  * 替换链接中的语言标识
@@ -70,8 +64,8 @@ const replacePath = (path = '', lang = i18n.global.locale.value) => {
 /**
  * 获取除origin之外的全路径-替换语言之后的
  *
- * @param {*} lang
- * @returns
+ * @param {string} lang 需要转换的语言
+ * @returns {string} 获取带语言的url
  */
 const getFullPath = (lang = i18n.global.locale.value) => {
     const fullPath = `${window.location.pathname}${window.location.search}${window.location.hash}`;
@@ -81,7 +75,7 @@ const getFullPath = (lang = i18n.global.locale.value) => {
 /**
  * 获取语言 本地缓存 > 浏览器 > 默认
  *
- * @return {string|undefined}
+ * @return {string} 语言标识
  */
 const getLanguage = () => {
     const storageLang = localStorage.getItem(STORE_LANG);
@@ -102,17 +96,11 @@ const getLanguage = () => {
 /**
  * 异步加载语言包并设置语言
  *
- * @param {string} lang 目录语言
+ * @param {string} lang 目标语言
  * @return {Promise}
  */
 const setAsyncLang = async (lang = '') => {
     lang = supportLang(lang) ? lang.toLowerCase() : defaultLang;
-
-    if (i18n.mode === 'legacy') {
-        i18n.global.locale = lang;
-    } else {
-        i18n.global.locale.value = lang;
-    }
 
     localStorage.setItem(STORE_LANG, lang);
     document.querySelector('html').setAttribute('lang', lang);
@@ -120,6 +108,12 @@ const setAsyncLang = async (lang = '') => {
     if (!i18n.global.availableLocales.includes(lang)) {
         const message = await import(/* webpackChunkName: "lang-[request]" */ `@/lang/${lang}/index.js`);
         i18n.global.setLocaleMessage(lang, message.default);
+    }
+
+    if (i18n.mode === 'legacy') {
+        i18n.global.locale = lang;
+    } else {
+        i18n.global.locale.value = lang;
     }
 
     return Promise.resolve(lang);
@@ -131,7 +125,7 @@ const setAsyncLang = async (lang = '') => {
  * @param {string} lang 需要设置的语言
  * @param {Boolean} redirect 设置完是否需要重定向
  */
-i18n.setLang = (lang = '', redirect = false) => {
+const setLang = (lang = '', redirect = false) => {
     if (!supportLang(lang)) return;
 
     // 如果重定向
@@ -152,7 +146,7 @@ i18n.setLang = (lang = '', redirect = false) => {
  *
  * @return {Sting} zh-cn
  */
-i18n.getLang = () => {
+const getI18nLang = () => {
     if (i18n.mode === 'legacy') {
         return i18n.global.locale;
     }
@@ -162,6 +156,8 @@ i18n.getLang = () => {
 
 export {
     i18n,
+    setLang,
+    getI18nLang,
     supportLang,
     replacePath,
     setAsyncLang,

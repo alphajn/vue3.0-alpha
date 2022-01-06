@@ -10,3 +10,6 @@ export const langs = [
 
 // 网站默认语言
 export const lang = 'zh-cn';
+
+// 默认存储的cookie key
+export const STORE_LANG = 'lang';

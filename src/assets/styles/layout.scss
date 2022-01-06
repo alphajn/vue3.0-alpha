@@ -1,6 +1,6 @@
 /**
  * @file 常用通用样式 flex 布局
- * @date 2021-06-25
+ * @date 2022-01-06
  */
 
 [class*=flex-row] {
@@ -56,7 +56,7 @@
 // flex 布局 end
 
 // 常用间距
-@each $key in 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 30, 36, 40, 44, 60 {
+@each $key in 4, 6, 8, 10, 12, 14, 16 {
     .mt#{$key} {
         margin-top: #{$key}px;
     }
@@ -98,6 +98,13 @@
     }
 }
 
+// 字体weight
+@each $key in normal, bold {
+    .font-#{$key} {
+        font-weight: #{$key};
+    }
+}
+
 // vertical align
 @each $key in top, middle, bottom {
     .vertical-align-#{$key} {
@@ -105,15 +112,15 @@
     }
 }
 
-// text align
-@each $key in left, center, right {
+// 文本对其方式
+@each $key in left, center, right, justify {
     .text-align-#{$key} {
         text-align: #{$key};
     }
 }
 
-// text align
-@each $key in default, pointer, not-allowed {
+// 鼠标样式
+@each $key in default, pointer, not-allowed, progress {
     .cursor-#{$key} {
         cursor: #{$key};
     }
@@ -135,8 +142,4 @@
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
-}
-
-.font-bold {
-    font-weight: bold;
 }

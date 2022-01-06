@@ -11,13 +11,13 @@ module.exports = {
             errors: false,
         },
     },
-    css: {
-        loaderOptions: {
-            scss: {
-                prependData: '@import "~@/assets/styles/mixins.scss";',
-            },
-        },
-    },
+    // css: {
+    //     loaderOptions: {
+    //         scss: {
+    //             prependData: '@import "~@/assets/styles/mixins.scss";',
+    //         },
+    //     },
+    // },
     chainWebpack: (config) => {
         // 移除 prefetch 插件
         config.plugins.delete('prefetch');
